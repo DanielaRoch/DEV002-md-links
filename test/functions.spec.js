@@ -104,3 +104,19 @@ describe('analyzeMdFilesArray, entrega el array de objetos luego de leer cada ar
     expect(analyzeMdFilesArray(['./testeo/testeo1.md'])).resolves.toEqual(arrayObjects)
   });
 });
+
+// Test para obtener los links .md
+const content = `
+[Funciones (control de flujo)](https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/03-functions)
+[Funciones clásicas](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/01-classic)
+[Arrow Functions](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/02-arrow)
+[Funciones — bloques de código reutilizables - MDN](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions)`
+
+describe('getLinksDocument, entrega el array de objetos luego de hacer match con los links', () => {
+  it('debe ser una función', () => {
+    expect(typeof getLinksDocument).toBe('function')
+  });
+  it('retorna un array de objetos', () => {
+    expect(getLinksDocument('./testeo/testeo1.md', content)).toEqual(arrayObjects)
+  });
+});
