@@ -72,7 +72,7 @@ describe("getAllFilesDirectory", () => {
 // Test para recorrer el array
 const arrayObjects = [
   {
-    href: 'https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/03-functions',
+    href: 'https://curriculum.laboratoria/',
     text: 'Funciones (control de flujo)',
     path: './testeo/testeo1.md'
   },
@@ -107,7 +107,7 @@ describe('analyzeMdFilesArray, entrega el array de objetos luego de leer cada ar
 
 // Test para obtener los links .md
 const content = `
-[Funciones (control de flujo)](https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/03-functions)
+[Funciones (control de flujo)](https://curriculum.laboratoria/)
 [Funciones clásicas](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/01-classic)
 [Arrow Functions](https://curriculum.laboratoria.la/es/topics/javascript/03-functions/02-arrow)
 [Funciones — bloques de código reutilizables - MDN](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions)`
@@ -118,5 +118,48 @@ describe('getLinksDocument, entrega el array de objetos luego de hacer match con
   });
   it('retorna un array de objetos', () => {
     expect(getLinksDocument('./testeo/testeo1.md', content)).toEqual(arrayObjects)
+  });
+});
+
+// Test para validar --validate
+const validateObjects = [
+  {
+    href: 'https://curriculum.laboratoria/',
+    text: 'Funciones (control de flujo)',
+    path: './testeo/testeo1.md',
+    status: 'ERROR',
+    ok: 'fail'
+  },
+  {
+    href: 'https://curriculum.laboratoria.la/es/topics/javascript/03-functions/01-classic',
+    text: 'Funciones clásicas',
+    path: './testeo/testeo1.md',
+    status: 200,
+    ok: 'OK'
+  },
+  {
+    href: 'https://curriculum.laboratoria.la/es/topics/javascript/03-functions/02-arrow',
+    text: 'Arrow Functions',
+    path: './testeo/testeo1.md',
+    status: 200,
+    ok: 'OK'
+  },
+  {
+    href: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions',
+    text: 'Funciones — bloques de código reutilizables - MDN',
+    path: './testeo/testeo1.md',
+    status: 404,
+    ok: 'fail'
+  }
+]
+describe('getHttpResponse, entrega el array de objetos sumando el status y statustext', () => {
+  it('debe ser una función', () => {
+    expect(typeof getHttpResponse).toBe('function')
+  });
+  it('retorna una promesa', () => {
+    expect(typeof getHttpResponse([]).then).toBe('function')
+  });
+  it('retorna un array de objetos', () => {
+    expect(getHttpResponse(arrayObjects)).resolves.toEqual(validateObjects)
   });
 });
