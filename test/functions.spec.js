@@ -65,6 +65,42 @@ describe("validateDirectory", () => {
 describe("getAllFilesDirectory", () => {
   it('Debe devolver los archivos del directorio', () => {
     expect(getAllFilesDirectory('./testeo'))
-    .toEqual(["./testeo/testeo1.md", "./testeo/testeo2.js", "./testeo/subTest/hayLinks.md", "./testeo/subTest/noHayLinks.md", ])
+    .toEqual([ "./testeo/subTest/hayLinks.md", "./testeo/subTest/noHayLinks.md","./testeo/testeo1.md", "./testeo/testeo2.js"])
+  });
+});
+
+// Test para recorrer el array
+const arrayObjects = [
+  {
+    href: 'https://curriculum.laboratoria.la/es/topics/javascript/02-flow-control/03-functions',
+    text: 'Funciones (control de flujo)',
+    path: './testeo/testeo1.md'
+  },
+  {
+    href: 'https://curriculum.laboratoria.la/es/topics/javascript/03-functions/01-classic',
+    text: 'Funciones clásicas',
+    path: './testeo/testeo1.md'
+  },
+  {
+    href: 'https://curriculum.laboratoria.la/es/topics/javascript/03-functions/02-arrow',
+    text: 'Arrow Functions',
+    path: './testeo/testeo1.md'
+  },
+  {
+    href: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions',
+    text: 'Funciones — bloques de código reutilizables - MDN',
+    path: './testeo/testeo1.md'
+  }
+];
+
+describe('analyzeMdFilesArray, entrega el array de objetos luego de leer cada archivo', () => {
+  it('debe ser una función', () => {
+    expect(typeof analyzeMdFilesArray).toBe('function')
+  });
+  it('retorna una promesa', () => {
+    expect(typeof analyzeMdFilesArray([]).then).toBe('function')
+  });
+  it('retorna un array de objetos', () => {
+    expect(analyzeMdFilesArray(['./testeo/testeo1.md'])).resolves.toEqual(arrayObjects)
   });
 });
