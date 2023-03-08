@@ -24,7 +24,3 @@ if (path) {
     console.log(chalk.bgRed.bold("ERROR: Please verify your params"));
   }
 }
-
-// ruta .md con links './testeando/conLinks.md'
-// ruta .md sin links './testeando/sinLinks.md'
-// ruta archivo no .md './package.json'
