@@ -163,3 +163,23 @@ describe('getHttpResponse, entrega el array de objetos sumando el status y statu
     expect(getHttpResponse(arrayObjects)).resolves.toEqual(validateObjects)
   });
 });
+
+// Test para validar --stats
+describe('getStatsResult, entrega un objeto con dos propiedades total y unique', () => {
+  it('debe ser una función', () => {
+    expect(typeof getStatsResult).toBe('function')
+  });
+  it('retorna un objeto con dos propiedades', () => {
+    expect(getStatsResult([arrayObjects])).toEqual({Total: 1, Unique: 1})
+  });
+});
+
+// Test para validar --Validate --stats
+describe('getResultValidateStats, entrega un objeto con tres propiedadess total, unique, broken', () => {
+  it('debe ser una función', () => {
+    expect(typeof getResultValidateStats).toBe('function')
+  });
+  it('retorna un objeto con tres propiedades', () => {
+    expect(getResultValidateStats([arrayObjects])).toEqual({Total: 1, Unique: 1, Broken: 0})
+  });
+});
