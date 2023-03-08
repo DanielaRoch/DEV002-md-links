@@ -26,3 +26,26 @@ describe("existPath", () => {
     expect(existPath("./aqui/falla.md")).toEqual(false);
   });
 });
+
+// Test para validar si es archivo es tipo .md
+describe("existMdFile", () => {
+  it("Debe ser una función", () => {
+    expect(typeof existMdFile).toBe("function");
+  });
+  it("Debe devolver true si el archivo es tipo .md", () => {
+    existMdFile("./README.md");
+    expect(existMdFile("./README.md")).toEqual(true);
+  });
+  it("Debe devolver false si el archivo no es tipo .md", () => {
+    existMdFile("./README.md");
+    expect(existMdFile("./package.json")).toEqual(false);
+  });
+});
+
+// Test validacion si la ruta es absoluta o relativa
+describe('convertToAbsolute', () => {
+  it('Debe cambiar la ruta a absoluta si es relativa', () => {
+    convertToAbsolute(`${currentDir}\\README.md`);
+    expect(convertToAbsolute(`${currentDir}\\README.md`)).toBe(`${currentDir}\\README.md`);
+  });
+});
