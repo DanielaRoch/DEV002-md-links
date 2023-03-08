@@ -49,3 +49,22 @@ describe('convertToAbsolute', () => {
     expect(convertToAbsolute(`${currentDir}\\README.md`)).toBe(`${currentDir}\\README.md`);
   });
 });
+
+// Test para validar si es un directorio
+describe("validateDirectory", () => {
+  it("Debe ser una función", () => {
+    expect(typeof validateDirectory).toBe("function");
+  });
+  it('Debe validar si la ruta es directorio', () => {
+    validateDirectory('./testeo');
+    expect(validateDirectory('./testeo'))
+  })
+});
+
+// Test para leer los archivos
+describe("getAllFilesDirectory", () => {
+  it('Debe devolver los archivos del directorio', () => {
+    expect(getAllFilesDirectory('./testeo'))
+    .toEqual(["./testeo/testeo1.md", "./testeo/testeo2.js", "./testeo/subTest/hayLinks.md", "./testeo/subTest/noHayLinks.md", ])
+  });
+});
