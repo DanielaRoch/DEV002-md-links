@@ -13,5 +13,5 @@ if (path) {
   const stats = [option1, option2].filter(option => option === "--stats").length > 0;
   mdLinks(path, { validate: validate, stats: stats }).then((result) => result);
 } else {
-  console.log(chalk.bgRed.bold("ERROR: No file path"));
+  console.log(chalk.bgRed.bold("ERROR: NO PATH FOUND"));
 }
