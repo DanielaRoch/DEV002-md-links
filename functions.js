@@ -85,9 +85,9 @@ const getLinksDocument = (file, content) => {
     //valida las coincidencias con respecto a la expresión regular de texto
     console.log(
       chalk.bgRed.bold(
-        "---------- ERROR: Dont exist Links on the path " +
+        "-- ERROR: There is no link on the path" +
           `${file}` +
-          " ----------"
+          " --"
       )
     );
     return [];

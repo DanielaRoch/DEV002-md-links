@@ -17,7 +17,7 @@ const mdLinks = (path, options) => {
     let mdFilesArray = [];
     if (existPath(path)) {
       console.log(
-        chalk.bgGreen.bold("---------- INFO: The path exist ----------")
+        chalk.bgGreen.bold("-- RESULT: The path exist --")
       );
       const absolutePath = convertToAbsolute(path); // Se convierte path a absolute
       if (validateDirectory(absolutePath)) {
@@ -30,7 +30,7 @@ const mdLinks = (path, options) => {
           } else {
             console.log(
               chalk.bgYellow.bold(
-                `---------- WARNING: no file type .md ${file}----------`
+                `-- RESULT: no file type .md ${file}--`
               )
             );
           }
@@ -42,7 +42,7 @@ const mdLinks = (path, options) => {
         } else {
           console.log(
             chalk.bgYellow.bold(
-              `---------- WARNING: no file type .md ${absolutePath}----------`
+              `-- RESULT: no file type .md ${absolutePath}--`
             )
           );
         }
@@ -50,7 +50,7 @@ const mdLinks = (path, options) => {
       // Cuando el array esta vacio (No encuentra archivos .md)
       if (mdFilesArray.length === 0) {
         console.log(
-          chalk.bgRed.bold("---------- WARNING: no .md files ----------")
+          chalk.bgRed.bold("-- RESULT: no .md files --")
         );
       }
       //En esta sección comienza a validar los parámetros enviados: *--validate* y *--stats*
@@ -107,7 +107,7 @@ const mdLinks = (path, options) => {
       }
     } else {
       console.log(
-        chalk.bgRed.bold("---------- ERROR: The path does not exist ----------")
+        chalk.bgRed.bold("-- RESULT: The path does not exist --")
       );
     }
   });
